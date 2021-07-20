@@ -17,25 +17,6 @@ LD V4 $1
 LD V5 $238
 SE V5 $238
 JP $784
-LD V3 $0
-LD V4 $2
-LD V5 $238
-LD V6 $238
-SE V5 V6
-JP $784
-LD V3 $0
-LD V4 $3
-LD V5 $238
-SNE V5 $253
-JP $784
-LD V3 $0
-LD V4 $4
-LD V5 $238
-ADD V5 $1
-SE V5 $239
-JP $784
-LD V3 $0
-LD V4 $5
 ...
 ```
 
@@ -48,5 +29,5 @@ Currently if you want to store the output to a file, you can just redirect STDOU
   - [x] Basic Disassembly 
   - [ ] Tests
 - [ ] Assembly
-  - [x] Basic Assembly 
+  - [ ] Basic Assembly 
   - [ ] Tests
