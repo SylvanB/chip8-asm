@@ -9,12 +9,21 @@ pub(crate) struct Parser<'parser> {
 }
 
 impl<'parser> Parser<'parser> {
-    pub fn initialise(src: &'parser [u8]) -> Self {
+    pub fn new(src: &'parser [u8]) -> Self {
         Self {
             src,
             idx: 0,
             out: vec![],
         }
+    }
+
+    pub fn parse(mut self) -> Vec<Token> {
+        while self.idx < self.src.len() {
+            let op = self.get_next_op().unwrap();
+            self.parse_op(op);
+        }
+
+        self.out
     }
 
     // Get the next op in the stream

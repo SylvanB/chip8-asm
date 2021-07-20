@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 /// Represents the entire base instruction set of the Chip8 interpreter.
 #[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Token {
@@ -36,4 +38,46 @@ pub enum Token {
     LD_I_Vx(u8),
     LD_Vx_I(u8),
     DATA(u16),
+}
+
+impl Display for Token {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Token::CLS => write!(f, "CLS"),
+            Token::RET => write!(f, "RET"),
+            Token::JP_NNN(nnn) => write!(f, "JP ${}", nnn),
+            Token::CALL_Addr(addr) => write!(f, "CALL ${}", addr),
+            Token::SE_Vx_Byte(vx, byte) => write!(f, "SE V{} ${}", vx, byte),
+            Token::SNE_Vx_Byte(vx, byte) => write!(f, "SNE V{} ${}", vx, byte),
+            Token::SE_Vx_Vy(vx, vy) => write!(f, "SE V{} V{}", vx, vy),
+            Token::LD_Vx_Byte(vx, byte) => write!(f, "LD V{} ${}", vx, byte),
+            Token::ADD_Vx_Byte(vx, byte) => write!(f, "ADD V{} ${}", vx, byte),
+            Token::LD_Vx_Vy(vx, vy) => write!(f, "LD V{} V{}", vx, vy),
+            Token::OR_Vx_Vy(vx, vy) => write!(f, "OR V{} V{}", vx, vy),
+            Token::AND_Vx_Vy(vx, vy) => write!(f, "AND V{} V{}", vx, vy),
+            Token::XOR_Vx_Vy(vx, vy) => write!(f, "XOR V{} V{}", vx, vy),
+            Token::ADD_Vx_Vy(vx, vy) => write!(f, "ADD V{} V{}", vx, vy),
+            Token::SUB_Vx_Vy(vx, vy) => write!(f, "SUB V{} V{}", vx, vy),
+            Token::SHR_Vx_Vy(vx, vy) => write!(f, "SHR V{} V{}", vx, vy),
+            Token::SUBN_Vx_Vy(vx, vy) => write!(f, "SUBN V{} V{}", vx, vy),
+            Token::SHL_Vx_Vy(vx, vy) => write!(f, "SHL V{} V{}", vx, vy),
+            Token::SNE_Vx_Vy(vx, vy) => write!(f, "SNE V{} V{}", vx, vy),
+            Token::LD_I_Addr(addr) => write!(f, "LD I ${}", addr),
+            Token::JP_V0_Addr(addr) => write!(f, "JP V0 ${}", addr),
+            Token::RND_Vx_Byte(vx, byte) => write!(f, "RND V{} ${}", vx, byte),
+            Token::DRW_Vx_Vy_N(vx, vy, n) => write!(f, "DRW ${} ${} ${}", vx, vy, n),
+            Token::SKP_Vx(vx) => write!(f, "SKP V{}", vx),
+            Token::SKNP_Vx(vx) => write!(f, "SKNP V{}", vx),
+            Token::LD_Vx_Dt(vx) => write!(f, "LD V{} D", vx),
+            Token::LD_Vx_K(vx) => write!(f, "LD V{} K", vx),
+            Token::LD_Dt_Vx(vx) => write!(f, "LD D ${}", vx),
+            Token::LD_St_Vx(vx) => write!(f, "LD S ${}", vx),
+            Token::ADD_I_Vx(vx) => write!(f, "ADD I V{}", vx),
+            Token::LD_F_Vx(vx) => write!(f, "LD F V{}", vx),
+            Token::LD_B_Vx(vx) => write!(f, "LD B V{}", vx),
+            Token::LD_I_Vx(vx) => write!(f, "LD I V{}", vx),
+            Token::LD_Vx_I(vx) => write!(f, "LD V{} I", vx),
+            Token::DATA(d) => write!(f, "DATA ${}", d),
+        }
+    }
 }

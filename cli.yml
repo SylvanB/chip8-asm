@@ -1,0 +1,6 @@
+name: chip8-asm
+args:
+    - INPUT:
+        help: Sets the input file to use
+        required: true
+        index: 1
