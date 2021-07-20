@@ -8,8 +8,6 @@ mod opcode;
 mod parser;
 mod token;
 
-pub(crate) const MAX_MEM: usize = 0xD00;
-
 fn main() {
     let yaml = load_yaml!("../cli.yml");
     let matches = App::from_yaml(yaml).get_matches();

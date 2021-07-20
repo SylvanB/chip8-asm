@@ -77,7 +77,7 @@ impl Display for Token {
             Token::LD_B_Vx(vx) => write!(f, "LD B V{}", vx),
             Token::LD_I_Vx(vx) => write!(f, "LD I V{}", vx),
             Token::LD_Vx_I(vx) => write!(f, "LD V{} I", vx),
-            Token::DATA(d) => write!(f, "DATA {}", d),
+            Token::DATA(d) => write!(f, "DATA {:#02x}", d),
         }
     }
 }
