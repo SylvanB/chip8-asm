@@ -39,13 +39,6 @@ impl<'parser> Parser<'parser> {
         None
     }
 
-    // Parse the next token
-    pub fn parse_next_op(&mut self) {
-        if let Some(op) = self.get_next_op() {
-            self.parse_op(op);
-        }
-    }
-
     // Parse a single op
     fn parse_op(&mut self, op: OpCode) {
         let token = match op.raw() {

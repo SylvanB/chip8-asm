@@ -22,14 +22,7 @@ impl OpCode {
 
     pub fn new_from_parts(byte_a: u8, byte_b: u8) -> Self {
         let raw_opcode = (byte_a as u16) << 8 | byte_b as u16;
-        Self {
-            inner: raw_opcode,
-            id: ((raw_opcode & 0xF000) >> 12) as u8,
-            x: ((raw_opcode & 0x0F00) >> 8) as u8,
-            y: ((raw_opcode & 0x00F0) >> 4) as u8,
-            kk: (raw_opcode & 0x00FF) as u8,
-            nnn: (raw_opcode & 0x0FFF),
-        }
+        Self::new(raw_opcode)
     }
 
     pub fn raw(&self) -> u16 {

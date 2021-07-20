@@ -1,6 +1,7 @@
 use std::fmt::Display;
 
 /// Represents the entire base instruction set of the Chip8 interpreter.
+#[allow(non_camel_case_types)]
 #[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Token {
     CLS,
